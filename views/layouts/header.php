@@ -14,7 +14,7 @@
     <header>
         <nav>
             <a href="#">
-                <img src="assets/img/logo.png" class="logo" alt="logo" width="200">
+                <img src="assets/img/logo.png" class="logo" alt="logo" width="150">
             </a>
             <ul>
                 <li>
@@ -23,11 +23,14 @@
                 <li>
                     <a href="views/galeria.html">Noticias</a>
                 </li>
+                
+            </ul>
+            <ul>
                 <li>
-                    <a href="views/presupuesto.html">Registro</a>
+                    <a href="views/presupuesto.html">Registrar</a>
                 </li>
                 <li>
-                    <a href="views/contacto.html">Inicio de Sesión</a>
+                    <button class="btn-custom">Iniciar Sesión</button>
                 </li>
             </ul>
         </nav>

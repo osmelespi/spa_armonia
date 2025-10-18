@@ -11,5 +11,60 @@
     list-style-type: none;
     color: #333333; 
     font-family: 'Poppins', sans-serif;
-    background-color: aqua;
+}
+
+body {
+    background-color: white;
+}
+
+header nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color:#f0eff0 ;
+    padding: 10px 80px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;  
+}
+
+header nav .logo {
+   position: relative;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    position: relative;
+} 
+
+header nav ul li {
+    font-size: 23px;
+    margin: 0 30px;
+}
+
+header nav ul li a {
+    color: #333333;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    color: white;
+    background-color: #879A7D;
+    padding: 5px 10px;
+    border-radius: 5px;   
+}
+
+.btn-custom {
+    background-color: #C9AA82;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
