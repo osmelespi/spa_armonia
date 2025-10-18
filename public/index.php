@@ -1,17 +1,23 @@
 <?php
+
+session_start();
+
 require_once '../config/database.php';
 
-$database = new Database();
-$conn = $database->getConnection();
+$action = $_GET['action'] ?? 'home';
+
+switch ($action) {
+    case 'home':
+        require_once '../views/layouts/header.php';
+        //require_once '../views/home/index.php';
+        //require_once '../views/layouts/footer.php';
+        break;
+    // Aquí puedes agregar más casos para diferentes acciones
+    default:
+        require_once '../views/layouts/header.php';
+        //require_once '../views/home/index.php';
+        //require_once '../views/layouts/footer.php';
+        break;
+}
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>

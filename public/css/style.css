@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "carattere";
+    src: url(../assets/fonts/Carattere/Carattere-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    color: #333333; 
+    font-family: 'Poppins', sans-serif;
+    background-color: aqua;
+}
