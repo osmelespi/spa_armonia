@@ -27,7 +27,7 @@ header nav {
     padding: 10px 80px;
     position: fixed;
     top: 0;
-    z-index: 1000;  
+    z-index: 1000;
 }
 
 header nav .logo {
@@ -67,4 +67,173 @@ header nav ul li a:hover {
     font-size: 23px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+main {
+    margin-top: 80px;
+}
+
+.presentacion {
+    text-align: center;
+    margin: 100px 20px;
+}
+
+.presentacion h1 {
+    font-family: "carattere", cursive;
+    font-size: 80px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color:  #879A7D;
+    text-shadow: #786348 2px 2px 4px;
+}
+
+.oculto{
+    display: none;
+}
+
+.visible{
+    display: inline;
+}
+
+#enlace{
+    color: #786348 ;
+    cursor: pointer;
+}
+
+.horarios{
+    text-align: center;
+}
+
+.subtitulo-horario {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+    text-shadow: #C9AA82 1px 1px 2px;
+}
+
+.tratamientos {
+    margin: 100px 0;
+    padding: 40px;
+    background-color: #f0eff0 ;
+    text-align: center  ;
+}
+
+.subtitulo-tratamientos{
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #333333;
+    text-shadow: #C9AA82 1px 1px 2px;
+}
+
+.img-masaje {
+    position: relative;
+    width: 420px;
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.img-masaje h5 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.img-masaje-relajante::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/img/masajerelajantes.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    transform-origin: center center;
+    z-index: 0;
+}
+
+.img-masaje-relajante > * {
+    position: relative;
+    z-index: 1;
+}
+
+.img-masaje-relajante:hover::before {
+    transform: scale(1.12);
+}
+
+.img-hidroterapia::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/img/hidroterapia.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    transform-origin: center center;
+    z-index: 0;
+}
+
+.img-hidroterapia > * {
+    position: relative;
+    z-index: 1;
+}
+
+.img-hidroterapia:hover::before {
+    transform: scale(1.12);
+}
+
+.img-cuidados-faciales::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/img/facial.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    transform-origin: center center;
+    z-index: 0;
+}
+
+.img-cuidados-faciales > * {
+    position: relative;
+    z-index: 1;
+}
+
+.img-cuidados-faciales:hover::before {
+    transform: scale(1.12);
+}
+.img-promociones::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/img/promociones.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    transform-origin: center center;
+    z-index: 0;
+}
+
+.img-promociones > * {
+    position: relative;
+    z-index: 1;
+}
+
+.img-promociones:hover::before {
+    transform: scale(1.12);
 }

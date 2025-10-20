@@ -18,7 +18,7 @@
             </a>
             <ul>
                 <li>
-                    <a class="enlaceactivo" href="">Inicio</a>
+                    <a class="enlaceactivo" href="">Inicio</a>   
                 </li>
                 <li>
                     <a href="views/galeria.html">Noticias</a>
