@@ -237,3 +237,40 @@ main {
 .img-promociones:hover::before {
     transform: scale(1.12);
 }
+
+footer {
+    text-align: center; 
+}
+
+.redes {
+    color: #333333; ;
+    font-size: 20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 25px 0;
+}
+
+.derechos {
+    font-size: 20px;
+    padding: 50px;
+    background-color: #879A7D;
+    margin:0;
+}
+
+.derechos div {
+    color: white;
+}
+
+.icono {
+    background-color: transparent;
+    border: 0 solid #786348;
+    transition: all 0.5s;
+    border-radius: 50%;
+}
+
+.icono:hover {
+    background-color: #786348;
+    border-width: 5px;
+}

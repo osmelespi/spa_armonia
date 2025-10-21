@@ -2,19 +2,19 @@
 
     <main>
         <section class="container">
-            <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+            <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="assets/img/foto2.jpg" class="d-block w-100 slider" alt="velas">
                   </div>
                   <div class="carousel-item">
-                    <img src="assets/img/foto5.jpg" class="d-block w-100 slider" alt="jacuzi">
+                    <img src="assets/img/foto10.jpg" class="d-block w-100 slider" alt="jacuzi">
                   </div>
                   <div class="carousel-item">
-                    <img src="assets/img/foto4.jpg" class="d-block w-100 slider" alt="relax">
+                    <img src="assets/img/foto9.jpg" class="d-block w-100 slider" alt="relax">
                   </div>
                   <div class="carousel-item">
-                    <img src="assets/img/foto7.jpg" class="d-block w-100 slider" alt="tumbonas">
+                    <img src="assets/img/foto1.jpg" class="d-block w-100 slider" alt="tumbonas">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
@@ -79,5 +79,4 @@
                 </div>
             </div>
         </section>
-        <script src="/public/js/script.js"></script>
     </main>
