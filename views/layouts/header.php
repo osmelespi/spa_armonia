@@ -13,12 +13,12 @@
 <body>
     <header>
         <nav>
-            <a href="#">
+            <a href="?action=home">
                 <img src="assets/img/logo.png" class="logo" alt="logo" width="150">
             </a>
             <ul>
                 <li>
-                    <a class="enlaceactivo" href="">Inicio</a>   
+                    <a class="enlaceactivo" href="?action=home">Inicio</a>   
                 </li>
                 <li>
                     <a href="views/galeria.html">Noticias</a>

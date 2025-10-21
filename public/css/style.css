@@ -123,6 +123,10 @@ main {
     text-align: center  ;
 }
 
+.tratamientos a {
+    text-decoration: none;
+}
+
 .subtitulo-tratamientos{
     font-size: 35px;
     font-weight: 600;

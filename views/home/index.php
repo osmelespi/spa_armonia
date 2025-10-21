@@ -57,24 +57,35 @@
                 <h2 class="subtitulo-tratamientos text-center">Nuestros Tratamientos</h2>
                 <div class="row justify-content-center g-4">
                     <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card img-masaje img-masaje-relajante text-center d-flex align-items-center justify-content-center">
-                            <h5 class="card-title-center">Masaje Relajante</h5>
-                        </div>
+                        <a href="?action=registro">
+                            <div class="card img-masaje img-masaje-relajante text-center d-flex align-items-center justify-content-center">
+                                <h5 class="card-title-center">Masaje Relajante</h5>
+                            </div>
+                        </a>
                     </div>
+                
                     <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card img-masaje img-hidroterapia text-center d-flex align-items-center justify-content-center" >
-                            <h5 class="card-title-center">Hidroterapia</h5>
-                        </div>
+                        <a href="?action=registro">
+                            <div class="card img-masaje img-hidroterapia text-center d-flex align-items-center justify-content-center">
+                                <h5 class="card-title-center">Hidroterapia</h5>
+                            </div>
+                        </a>
                     </div>
+                
                     <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card img-masaje img-cuidados-faciales text-center d-flex align-items-center justify-content-center">
-                            <h5 class="card-title-center">Cuidados Faciales</h5>
-                        </div>
+                        <a href="?action=registro">
+                            <div class="card img-masaje img-cuidados-faciales text-center d-flex align-items-center justify-content-center">
+                                <h5 class="card-title-center">Cuidados Faciales</h5>
+                            </div>
+                        </a>
                     </div>
+
                     <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card img-masaje img-promociones text-center d-flex align-items-center justify-content-center">
-                            <h5 class="card-title-center">Promociones</h5>
-                        </div>
+                        <a href="?action=registro">
+                            <div class="card img-masaje img-promociones text-center d-flex align-items-center justify-content-center">
+                                <h5 class="card-title-center">Promociones</h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
