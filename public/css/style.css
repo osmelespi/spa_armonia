@@ -68,8 +68,25 @@ header nav ul li a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+.btn-green {
+    color: white !important;
+    background-color: #879A7D !important;
+}
+
+.btn-green:hover {
+    background-color: #6b7f63 !important;
+}
+
+.enlaceactivo {
+    color: white;
+    background-color: #879A7D;
+    padding: 5px 10px;
+    border-radius: 5px; 
+}
+
 main {
-    margin-top: 80px;
+    margin-top: 200px;
 }
 
 .slider {
@@ -283,3 +300,4 @@ footer {
     background-color: #786348;
     border-width: 5px;
 }
+

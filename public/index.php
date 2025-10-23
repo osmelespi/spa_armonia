@@ -12,6 +12,11 @@ switch ($action) {
         require_once '../views/home/index.php';
         require_once '../views/layouts/footer.php';
         break;
+    case 'noticias':
+        require_once '../views/layouts/header.php';
+        require_once '../views/noticias/noticias.php';
+        require_once '../views/layouts/footer.php';
+        break;
     case 'registro':
         require_once '../views/layouts/header.php';
         require_once '../views/registro/registrar.php';

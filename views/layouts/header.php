@@ -1,3 +1,6 @@
+<?php
+$enlace=$_GET['action'] ?? 'home';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,16 +21,16 @@
             </a>
             <ul>
                 <li>
-                    <a class="enlaceactivo" href="?action=home">Inicio</a>   
+                    <a class="<?php echo $enlace === 'home' ? 'enlaceactivo' : ''; ?>" href="?action=home">Inicio</a>   
                 </li>
                 <li>
-                    <a href="views/galeria.html">Noticias</a>
+                    <a class="<?php echo $enlace === 'noticias' ? 'enlaceactivo' : ''; ?>" href="?action=noticias">Noticias</a>
                 </li>
                 
             </ul>
             <ul>
                 <li>
-                    <a href="views/presupuesto.html">Registrar</a>
+                    <a class="<?php echo $enlace === 'registro' ? 'enlaceactivo' : ''; ?>" href="?action=registro">Registrar</a>
                 </li>
                 <li>
                     <button class="btn-custom">Iniciar Sesión</button>
