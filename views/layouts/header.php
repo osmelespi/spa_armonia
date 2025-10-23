@@ -33,7 +33,7 @@ $enlace=$_GET['action'] ?? 'home';
                     <a class="<?php echo $enlace === 'registro' ? 'enlaceactivo' : ''; ?>" href="?action=registro">Registrar</a>
                 </li>
                 <li>
-                    <button class="btn-custom">Iniciar Sesión</button>
+                    <a class="loginBoton <?php echo $enlace === 'login' ? 'enlaceactivo' : ''; ?>" href="?action=login">Iniciar Sesión</a>
                 </li>
             </ul>
         </nav>

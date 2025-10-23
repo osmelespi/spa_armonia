@@ -15,6 +15,14 @@
 
 body {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 header nav {
@@ -59,14 +67,20 @@ header nav ul li a:hover {
     border-radius: 5px;   
 }
 
-.btn-custom {
+.loginBoton {
     background-color: #C9AA82;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
+}
+
+.loginBoton:hover {
+    background-color: #B0895A;  
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     font-size: 23px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
 }
 
 .btn-green {
@@ -87,6 +101,7 @@ header nav ul li a:hover {
 
 main {
     margin-top: 200px;
+    flex: 1;
 }
 
 .slider {

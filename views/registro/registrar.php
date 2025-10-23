@@ -21,6 +21,36 @@
                     </div>
 
                     <div class="col-md-6">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input id="telefono" name="telefono" type="tel" class="form-control" required maxlength="20" pattern="[0-9+\-\s]{7,20}" placeholder="+34 600 000 000">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+                        <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" class="form-control" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <textarea id="direccion" name="direccion" class="form-control" rows="2" maxlength="255" placeholder="Calle, número, ciudad, código postal"></textarea>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <select id="sexo" name="sexo" class="form-select" required>
+                            <option value="" selected disabled>Selecciona...</option>
+                            <option value="hombre">Hombre</option>
+                            <option value="mujer">Mujer</option>
+                            <option value="sin_determinar">Prefiero no decirlo</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
+                        <input id="nombre_usuario" name="nombre_usuario" type="text" class="form-control" required maxlength="50" placeholder="Nombre de usuario">
+                    </div>
+
+                    <div class="col-md-6">
                         <label for="password" class="form-label">Contraseña</label>
                         <input id="password" name="password" type="password" class="form-control" required minlength="6" autocomplete="new-password">
                     </div>
@@ -35,15 +65,13 @@
                     </div>
                     <div class="col-12 d-flex gap-2">
                         <button type="submit" class="btn btn-green">Registrarme</button>
-                        <a class="btn btn-outline-secondary" href="/iniciar-sesion.php">Iniciar sesión</a>
+                        
                     </div>
                     <div class="col-12 link">
-                        ¿Ya tienes cuenta? <a href="/iniciar-sesion.php">Inicia sesión</a>
+                        ¿Ya tienes cuenta? <a href="?action=login">Inicia sesión</a>
                     </div>
                 </div>
-            </form>
-
-            
+            </form> 
         </div>
     </div>
 </main>
