@@ -73,7 +73,53 @@
                         <i class="bi bi-send-check"></i> Solicitar Cita
                     </button>
                 </div>
-            </form>   
+            </form> 
+            <div class="container" id="modifyAppointmentForm">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-12">
+                        <div class="appointments-card">
+                            <div class="appointments-header">
+                                <div class="appointments-icon">
+                                    <i class="bi bi-calendar-week"></i>
+                                </div>
+                                <h2 class="mb-1">Mis Citas</h2>
+                                <p class="text-muted">Gestiona tus citas programadas</p>
+                            </div>
+
+                            <!-- Lista de Citas -->
+                            <div id="appointmentsList">
+                                <!-- Cita 1 -->
+                                <div class="card appointment-item d-flex flex-wrap align-items-center p-3" data-id="1">
+                                    <div class="appointment-info">
+                                        <div class="appointment-date">
+                                            <i class="bi bi-calendar3"></i> Miércoles, 15 de Noviembre de 2024
+                                        </div>
+                                        <div class="appointment-time">
+                                            <i class="bi bi-clock"></i> 10:30
+                                        </div>
+                                        <div class="appointment-reason">
+                                            <i class="bi bi-chat-left-text"></i> Consulta médica general y revisión de resultados
+                                        </div>
+                                        <div class="mt-2">
+                                            <span class="appointment-status status-confirmed">
+                                                <i class="bi bi-check-circle"></i> Confirmada
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="appointment-actions">
+                                        <button class="btn btn-primary" onclick="editAppointment(1)">
+                                            <i class="bi bi-pencil-square"></i> Modificar
+                                        </button>
+                                        <button class="btn btn-danger" onclick="deleteAppointment(1)">
+                                            <i class="bi bi-trash"></i> Borrar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
