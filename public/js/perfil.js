@@ -1,6 +1,4 @@
-$('#btnSave, #btnCancel').hide();
-$('#passwordForm').hide();
-
+ 
 let nombreOriginal = $('#nombre').val();
 let apellidosOriginal = $('#apellidos').val();
 let emailOriginal = $('#email').val();

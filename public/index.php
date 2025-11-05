@@ -37,6 +37,20 @@ switch ($action) {
         require_once '../views/citaciones/citas.php';
         require_once '../views/layouts/footer.php';
         break;
+    case 'usuarios_admin':
+        require_once '../views/layouts/header.php';
+        require_once '../views/administracion/usuarios/usuariosadmin.php';
+        require_once '../views/layouts/footer.php';
+        break;
+    case 'citas_admin':
+        require_once '../views/layouts/header.php';
+        require_once '../views/administracion/citas/citasadmin.php';
+        require_once '../views/layouts/footer.php';
+        break;
+    case 'noticias_admin':
+        require_once '../views/layouts/header.php'; 
+        require_once '../views/administracion/noticias/noticiasadmin.php';
+        require_once '../views/layouts/footer.php';
     // Aquí puedes agregar más casos para diferentes acciones
     default:
         require_once '../views/layouts/header.php';
