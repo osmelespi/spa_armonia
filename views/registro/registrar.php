@@ -3,7 +3,7 @@
         <div class="card p-4 w-50">
             <h1>Crear cuenta</h1>
 
-            <form method="post" action="">
+            <form method="post" action="?action=registrar_usuario">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="nombre" class="form-label">Nombre</label>
@@ -47,12 +47,12 @@
 
                     <div class="col-md-12">
                         <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
-                        <input id="nombre_usuario" name="nombre_usuario" type="text" class="form-control" required maxlength="50" placeholder="Nombre de usuario">
+                        <input id="nombre_usuario" name="usuario" type="text" class="form-control" required maxlength="50" placeholder="Nombre de usuario">
                     </div>
 
                     <div class="col-md-6">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input id="password" name="password" type="password" class="form-control" required minlength="6" autocomplete="new-password">
+                        <input id="password" name="contrasena" type="password" class="form-control" required minlength="6" autocomplete="new-password">
                     </div>
 
                     <div class="col-md-6">

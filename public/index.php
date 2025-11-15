@@ -22,6 +22,11 @@ switch ($action) {
         require_once '../views/registro/registrar.php';
         require_once '../views/layouts/footer.php';
         break;
+    case 'registrar_usuario':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->registrarUsuario();
+        break;
     case 'login':
         require_once '../views/layouts/header.php';
         require_once '../views/login/login.php';
