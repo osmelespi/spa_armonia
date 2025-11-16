@@ -1,3 +1,14 @@
+<?php
+require_once '../controllers/usuarioController.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php?action=login");
+    exit();
+}
+$usuarioController = new UsuarioController();
+$perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
+?>
+
 <main class="container">
     <div class="card text-center">
         <div class="card-header">
@@ -12,13 +23,14 @@
         </div>
         <div class="card-body">
             <form id="profileForm">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <!-- Nombre de Usuario (Solo lectura) -->
                 <div class="mb-4">
                     <label for="username" class="form-label">
                         <i class="bi bi-person-badge"></i> Nombre de Usuario
                     </label>
                     <input type="text" class="form-control readonly-field" id="username" 
-                            value="usuario123" readonly>
+                            value="<?php echo $_SESSION['usuario']; ?>" readonly>
                     <small class="text-muted">El nombre de usuario no se puede modificar</small>
                 </div>
 
@@ -28,16 +40,16 @@
                         <label for="nombre" class="form-label">
                             <i class="bi bi-person"></i> Nombre
                         </label>
-                        <input type="text" class="form-control" id="nombre" 
-                                value="Juan" disabled required>
+                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                value="<?php echo $perfilData['nombre']; ?>" disabled required>
                     </div>
                     <!-- Apellidos -->
                     <div class="col-md-6">
                         <label for="apellidos" class="form-label">
                             <i class="bi bi-person"></i> Apellidos
                         </label>
-                        <input type="text" class="form-control" id="apellidos" 
-                                value="García López" disabled required>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                value="<?php echo $perfilData['apellidos']; ?>" disabled required>
                     </div>
                 </div>
 
@@ -46,8 +58,8 @@
                     <label for="email" class="form-label">
                         <i class="bi bi-envelope"></i> Correo Electrónico
                     </label>
-                    <input type="email" class="form-control" id="email" 
-                            value="juan.garcia@email.com" disabled required>
+                    <input type="email" class="form-control" id="email" name="email"
+                            value="<?php echo $perfilData['email']; ?>" disabled required>
                 </div>
 
                 <!-- Teléfono -->
@@ -55,8 +67,8 @@
                     <label for="telefono" class="form-label">
                         <i class="bi bi-telephone"></i> Teléfono
                     </label>
-                    <input type="tel" class="form-control" id="telefono" 
-                            value="+34 612 345 678" disabled required>
+                    <input type="tel" class="form-control" id="telefono" name="telefono"
+                            value="<?php echo $perfilData['telefono']; ?>" disabled required>
                 </div>
 
                 <!-- Fecha de Nacimiento -->
@@ -65,20 +77,19 @@
                         <label for="fechaNacimiento" class="form-label">
                             <i class="bi bi-calendar"></i> Fecha de Nacimiento
                         </label>
-                        <input type="date" class="form-control" id="fechaNacimiento" 
-                                value="1990-05-15" disabled required>
+                        <input type="date" class="form-control" id="fechaNacimiento" name="fecha_nacimiento"
+                                value="<?php echo $perfilData['fecha_nacimiento']; ?>" disabled required>
                     </div>
                     <!-- Sexo -->
                     <div class="col-md-6">
                         <label for="sexo" class="form-label">
                             <i class="bi bi-gender-ambiguous"></i> Sexo
                         </label>
-                        <select class="form-select" id="sexo" disabled required>
+                        <select class="form-select" id="sexo" disabled required name="sexo">
                             <option value="">Seleccionar...</option>
-                            <option value="masculino" selected>Masculino</option>
-                            <option value="femenino">Femenino</option>
-                            <option value="otro">Otro</option>
-                            <option value="prefiero-no-decir">Prefiero no decir</option>
+                            <option value="Hombre" <?php echo ($perfilData['sexo'] == 'Hombre') ? 'selected' : ''; ?>>Masculino</option>
+                            <option value="Mujer" <?php echo ($perfilData['sexo'] == 'Mujer') ? 'selected' : ''; ?>>Femenino</option>
+                            <option value="Sin determinar" <?php echo ($perfilData['sexo'] == 'Sin determinar') ? 'selected' : ''; ?>>Sin determinar</option>
                         </select>
                     </div>
                 </div>
@@ -88,8 +99,7 @@
                     <label for="direccion" class="form-label">
                         <i class="bi bi-house"></i> Dirección
                     </label>
-                    <textarea class="form-control" id="direccion" rows="2" 
-                                disabled required>Calle Mayor 123, 28013 Madrid, España</textarea>
+                    <textarea class="form-control" id="direccion" name="direccion" rows="2" disabled required><?php echo $perfilData['direccion']; ?></textarea>
                 </div>
 
                 <!-- Botones -->

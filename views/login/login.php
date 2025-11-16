@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <h1 class="card-title mb-4 text-center">Iniciar sesión</h1>
 
-                    <form action="/login_process.php" method="post" autocomplete="off" novalidate>
+                    <form action="?action=autenticar" method="post" autocomplete="off" novalidate>
                         <input type="hidden" name="csrf_token">
 
                         <div class="mb-3">
@@ -17,6 +17,8 @@
                             <label for="password" class="form-label">Contraseña</label>
                             <input id="password" name="password" type="password" required placeholder="Contraseña" class="form-control">
                         </div>
+
+                        <span class="text-danger"><?php echo $_SESSION['error'] ?? ''; ?></span>
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-green btn-lg">Entrar</button>

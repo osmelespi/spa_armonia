@@ -52,7 +52,7 @@
 
                     <div class="col-md-6">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input id="password" name="contrasena" type="password" class="form-control" required minlength="6" autocomplete="new-password">
+                        <input id="password" name="password" type="password" class="form-control" required minlength="6" autocomplete="new-password">
                     </div>
 
                     <div class="col-md-6">

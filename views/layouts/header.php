@@ -26,15 +26,41 @@ $enlace=$_GET['action'] ?? 'home';
                 <li>
                     <a class="<?php echo $enlace === 'noticias' ? 'enlaceactivo' : ''; ?>" href="?action=noticias">Noticias</a>
                 </li>
-                
+                <?php
+                if (isset($_SESSION['user_id'])) {
+                    if ($_SESSION['rol'] === 'user' || $_SESSION['rol'] === 'admin') {
+                        echo '<li>
+                                <a class="' . ($enlace === 'citas' ? 'enlaceactivo' : '') . '" href="?action=citas">Citas</a>
+                              </li>';
+                    }
+                }
+                ?>
             </ul>
-            <ul>
-                <li>
-                    <a class="<?php echo $enlace === 'registro' ? 'enlaceactivo' : ''; ?>" href="?action=registro">Registrar</a>
-                </li>
-                <li>
-                    <a class="loginBoton <?php echo $enlace === 'login' ? 'enlaceactivo' : ''; ?>" href="?action=login">Iniciar Sesión</a>
-                </li>
-            </ul>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo '<ul>
+                        <li>
+                            <div class="dropdown menu-usuario">
+                                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                '. $_SESSION['nombre'] .' '. $_SESSION['apellidos'] .'
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="?action=perfil">Perfil</a></li>
+                                    <li><a class="dropdown-item" href="?action=logout">Cerrar Sesión</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>';
+            } else {
+                echo '<ul>
+                        <li>
+                            <a class="' . ($enlace === 'registro' ? 'enlaceactivo' : '') . '" href="?action=registro">Registrar</a>
+                        </li>
+                        <li>
+                            <a class="loginBoton ' . ($enlace === 'login' ? 'enlaceactivo' : '') . '" href="?action=login">Iniciar Sesión</a>
+                        </li>
+                    </ul>';
+            }
+            ?>
         </nav>
     </header>

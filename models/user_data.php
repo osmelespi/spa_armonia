@@ -35,7 +35,7 @@ class UserData {
     }
 
     public function getById($id) {
-        $query = "SELECT * FROM " . $this->table . " WHERE id_user = :id LIMIT 0,1";
+        $query = "SELECT * FROM " . $this->table . " WHERE idUser = :id LIMIT 0,1";
         
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id);
@@ -48,7 +48,7 @@ class UserData {
         $query = "UPDATE " . $this->table . " 
                   SET nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, 
                       fecha_nacimiento = :fecha_nacimiento, direccion = :direccion, sexo = :sexo 
-                  WHERE id_user = :id";
+                  WHERE idUser = :id";
         
         $stmt = $this->db->prepare($query);
         
@@ -65,7 +65,7 @@ class UserData {
     }
 
     public function delete($id) {
-        $query = "DELETE FROM " . $this->table . " WHERE id_user = :id";
+        $query = "DELETE FROM " . $this->table . " WHERE idUser = :id";
         
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id);

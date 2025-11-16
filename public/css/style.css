@@ -83,6 +83,10 @@ header nav ul li a:hover {
 
 }
 
+.menu-usuario ul li{
+    font-size: 15px !important;
+}
+
 .btn-green {
     color: white !important;
     background-color: #879A7D !important;

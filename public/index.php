@@ -32,10 +32,25 @@ switch ($action) {
         require_once '../views/login/login.php';
         require_once '../views/layouts/footer.php';
         break;
+    case 'autenticar':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->login();
+        break;
+    case 'logout':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->logout();
+        break;
     case 'perfil':
         require_once '../views/layouts/header.php';
         require_once '../views/perfil/perfil.php';
         require_once '../views/layouts/footer.php';
+        break;
+    case 'actualizar_perfil':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->actualizarPerfil();
         break;
     case 'citas':
         require_once '../views/layouts/header.php';

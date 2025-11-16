@@ -40,6 +40,17 @@ class UserLogin {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    //Recuperar usuario por nombre de usuario
+    public function getByUsername($username) {
+        $query = "SELECT * FROM " . $this->table . " WHERE usuario = :username LIMIT 0,1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function update($id) {
         $query = "UPDATE " . $this->table . " 
                     SET contrasena = :contrasena, rol = :rol 
