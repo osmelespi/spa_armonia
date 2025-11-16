@@ -57,8 +57,7 @@ $('#profileForm').on('submit', function(event) {
         method: 'POST',
         data: $(this).serialize(),
         dataType: 'json',
-        success: function(response, status, xhr) {
-            // Manejar la respuesta del servidor
+        success: function(response) {
             if (response.success) {
                 alert('Perfil actualizado con éxito');
                 window.location.href = 'index.php?action=perfil';

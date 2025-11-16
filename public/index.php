@@ -71,6 +71,27 @@ switch ($action) {
         require_once '../views/layouts/header.php'; 
         require_once '../views/administracion/noticias/noticiasadmin.php';
         require_once '../views/layouts/footer.php';
+        break;
+    case 'crear_noticia':
+        require_once '../controllers/noticiaController.php';
+        $noticiaController = new NoticiaController();
+        $noticiaController->guardarNoticia();
+        break;
+    case 'obtener_noticia':
+        require_once '../controllers/noticiaController.php';
+        $noticiaController = new NoticiaController();
+        $noticiaController->obtenerNoticiaPorId();
+        break;
+    case 'editar_noticia':
+        require_once '../controllers/noticiaController.php';
+        $noticiaController = new NoticiaController();
+        $noticiaController->editarNoticia();
+        break;
+    case 'borrar_noticia':
+        require_once '../controllers/noticiaController.php';
+        $noticiaController = new NoticiaController();
+        $noticiaController->borrarNoticia();
+        break;
     // Aquí puedes agregar más casos para diferentes acciones
     default:
         require_once '../views/layouts/header.php';

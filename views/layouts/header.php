@@ -23,16 +23,31 @@ $enlace=$_GET['action'] ?? 'home';
                 <li>
                     <a class="<?php echo $enlace === 'home' ? 'enlaceactivo' : ''; ?>" href="?action=home">Inicio</a>   
                 </li>
-                <li>
-                    <a class="<?php echo $enlace === 'noticias' ? 'enlaceactivo' : ''; ?>" href="?action=noticias">Noticias</a>
-                </li>
                 <?php
+                $noticias = '<li>
+                    <a class="' . ($enlace === 'noticias' ? 'enlaceactivo' : '') . '" href="?action=noticias">Noticias</a>
+                </li>';
+                
                 if (isset($_SESSION['user_id'])) {
-                    if ($_SESSION['rol'] === 'user' || $_SESSION['rol'] === 'admin') {
+                    if ($_SESSION['rol'] === 'user') {
+                        echo $noticias;
                         echo '<li>
                                 <a class="' . ($enlace === 'citas' ? 'enlaceactivo' : '') . '" href="?action=citas">Citas</a>
                               </li>';
+                    } else if ($_SESSION['rol'] === 'admin') {
+                        $noticias = '<li>
+                            <a class="' . ($enlace === 'noticias_admin' ? 'enlaceactivo' : '') . '" href="?action=noticias_admin">Noticias</a>
+                        </li>';
+                        echo $noticias;
+                        echo '<li>
+                                <a class="' . ($enlace === 'citas_admin' ? 'enlaceactivo' : '') . '" href="?action=citas_admin">Citas</a>
+                              </li>
+                              <li>
+                                <a class="' . ($enlace === 'usuarios_admin' ? 'enlaceactivo' : '') . '" href="?action=usuarios_admin">Usuarios</a>
+                              </li>';
                     }
+                } else {
+                    echo $noticias;
                 }
                 ?>
             </ul>
