@@ -44,6 +44,15 @@ class UserData {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function searchByName($name) {
+        $query = "SELECT * FROM " . $this->table . " WHERE LOWER(nombre) LIKE :name";
+        $stmt = $this->db->prepare($query);
+        $name = strtolower($name) . "%";
+        $stmt->bindParam(':name', $name);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function update($id) {
         $query = "UPDATE " . $this->table . " 
                   SET nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, 

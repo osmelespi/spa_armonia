@@ -44,6 +44,16 @@ class Cita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByUserId($idUser) {
+        $query = "SELECT * FROM " . $this->table . " WHERE idUser = :idUser ORDER BY fecha_cita DESC";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idUser', $idUser);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function update($id) {
         $query = "UPDATE " . $this->table . " 
                   SET idUser = :idUser, fecha_cita = :fecha_cita, motivo_cita = :motivo_cita 

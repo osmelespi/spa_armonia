@@ -42,6 +42,11 @@ switch ($action) {
         $usuarioController = new UsuarioController();
         $usuarioController->logout();
         break;
+    case 'buscar_usuarios':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->buscarUsuarios();
+        break;
     case 'perfil':
         require_once '../views/layouts/header.php';
         require_once '../views/perfil/perfil.php';
@@ -91,6 +96,31 @@ switch ($action) {
         require_once '../controllers/noticiaController.php';
         $noticiaController = new NoticiaController();
         $noticiaController->borrarNoticia();
+        break;
+    case 'crear_cita':
+        require_once '../controllers/citaController.php';
+        $citaController = new CitaController();
+        $citaController->guardarCita();
+        break;
+    case 'obtener_cita':
+        require_once '../controllers/citaController.php';
+        $citaController = new CitaController();
+        $citaController->obtenerCitaPorId();
+        break;
+    case 'obtener_citas_usuario':
+        require_once '../controllers/citaController.php';
+        $citaController = new CitaController();
+        $citaController->obtenerCitasPorUsuario();
+        break;
+    case 'editar_cita':
+        require_once '../controllers/citaController.php';
+        $citaController = new CitaController();
+        $citaController->editarCita();
+        break;
+    case 'borrar_cita':
+        require_once '../controllers/citaController.php';
+        $citaController = new CitaController();
+        $citaController->borrarCita();
         break;
     // Aquí puedes agregar más casos para diferentes acciones
     default:

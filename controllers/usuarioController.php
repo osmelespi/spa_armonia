@@ -107,6 +107,22 @@ class UsuarioController {
         }
        
     }
+
+    public function buscarUsuarios() {
+        if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['nombre'])) {
+            $query = $_GET['nombre'];
+            $usuarios = $this->userData->searchByName($query);
+            $userDataList = [];
+            foreach($usuarios as $usuario) {
+                $userDataList[] = [
+                    'id' => $usuario['idUser'],
+                    'nombre' => $usuario['nombre'] . ' ' . $usuario['apellidos']
+                ];
+            }
+            header('Content-Type: application/json');
+            echo json_encode($userDataList);
+        }
+    }
 }
 
 ?>

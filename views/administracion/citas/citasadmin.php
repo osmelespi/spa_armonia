@@ -1,3 +1,14 @@
+<?php
+require_once '../controllers/citaController.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php?action=login");
+    exit();
+}
+
+$citaController = new CitaController();
+$citas = $citaController->obtenerCitas();
+?>
 <main>
     <div class="container">
         <div class="row justify-content-center">
@@ -33,24 +44,20 @@
                     <!-- Lista de Citas -->
                     <div id="appointmentsList" class="row g-4">
                         <!-- Cita 1 -->
-                        <div class="card user-item p-4 col-md-3" data-id="1" data-user="juan garcía" data-status="confirmed">
+                         <?php if (!empty($citas)): foreach ($citas as $cita): ?>
+                        <div class="card user-item p-4 col-md-3" data-id="<?php echo $cita['id']; ?>" data-user="<?php echo $cita['usuario']; ?>" data-status="<?php echo $cita['estado']; ?>">
                             <div class="appointment-info">
                                 <div class="appointment-user">
-                                    <b>Nombre:</b> Juan García López
+                                    <b>Nombre:</b> <?php echo $cita['usuario']; ?>
                                 </div>
                                 <div class="appointment-date">
-                                    <b>Fecha:</b> Miércoles, 15 de Noviembre de 2024
+                                    <b>Fecha:</b> <?php echo date("l, d \d\e F \d\e Y", strtotime($cita['fecha'])); ?>
                                 </div>
                                 <div class="appointment-time">
-                                    <b>Hora:</b> 10:30
+                                    <b>Hora:</b> <?php echo date("H:i", strtotime($cita['hora'])); ?>           
                                 </div>
                                 <div class="appointment-reason">
-                                    <b>Motivo:</b> Consulta médica general
-                                </div>
-                                <div class="mt-2">
-                                    <span class="role-badge role-admin badge rounded-pill text-bg-success my-2">
-                                     Confirmada
-                                    </span>
+                                    <b>Motivo:</b> <?php echo $cita['motivo']; ?>
                                 </div>
                             </div>
                             <div class="appointment-actions">
@@ -62,6 +69,15 @@
                                 </button>
                             </div>
                         </div>
+                        <?php endforeach; else: ?>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        No hay citas disponibles.
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -81,16 +97,12 @@
                     <form id="createForm">
                         <!-- Seleccionar Usuario -->
                         <div class="mb-3">
-                            <label for="exampleDataList" class="form-label">Cliente</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar cliente">
-                            <datalist id="datalistOptions">
-                                <option value="San Francisco">
-                                <option value="New York">
-                                <option value="Seattle">
-                                <option value="Los Angeles">
-                                <option value="Chicago">
+                            <label for="buscarCliente" class="form-label">Cliente</label>
+                            <input class="form-control" list="datalistUsuarios" id="buscarCliente" placeholder="Buscar cliente">
+                            <datalist id="datalistUsuarios">
                             </datalist>
                         </div>
+                        <input type="hidden" id="createUserId" required>
 
                         <!-- Fecha -->
                         <div class="mb-3">
@@ -123,17 +135,6 @@
                                 <span id="createCharCount">0</span>/500 caracteres
                             </small>
                         </div>
-
-                        <!-- Estado -->
-                        <div class="mb-3">
-                            <label for="createStatus" class="form-label">
-                                <i class="bi bi-check-circle"></i> Estado
-                            </label>
-                            <select class="form-select" id="createStatus" required>
-                                <option value="pending">Pendiente</option>
-                                <option value="confirmed">Confirmada</option>
-                            </select>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -148,3 +149,4 @@
         </div>
     </div>
 </main>
+<script src="/public/js/citasAdmin.js"></script>
