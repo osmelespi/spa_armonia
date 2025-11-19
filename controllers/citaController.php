@@ -45,7 +45,9 @@ class citaController {
 
             $resultado = $this->cita->save();
 
-            if ($resultado) {
+            $ultimoId = $this->db->lastInsertId();
+
+            if ($ultimoId > 0 || $resultado) {
                 $this->db->commit();
                 echo json_encode(['success' => true, 'message' => 'Cita creada correctamente']);
             } else {
@@ -58,7 +60,7 @@ class citaController {
             }
             
             // Log del error real para debugging
-            error_log('Error en guardarCita: ' . $e->getMessage());
+            error_log('Error en guardar Cita: ' . $e->getMessage());
             
             echo json_encode([
                 'success' => false, 

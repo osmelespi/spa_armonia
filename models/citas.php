@@ -13,7 +13,15 @@ class Cita {
     }
 
     public function getAll() {
-        $query = "SELECT * FROM " . $this->table . " ORDER BY fecha_cita DESC";
+        $query = "SELECT 
+                    citas.*, 
+                    users_data.nombre as nombre_usuario,
+                    users_data.apellidos as apellidos_usuario,
+                    users_data.email as email_usuario,
+                    users_data.telefono as telefono_usuario
+                FROM " . $this->table . " as citas
+                LEFT JOIN users_data ON citas.idUser = users_data.idUser
+                ORDER BY citas.fecha_cita DESC";
 
         $stmt = $this->db->prepare($query);
         $stmt->execute();

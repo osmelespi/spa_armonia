@@ -32,3 +32,29 @@ $('#buscarCliente').on('change', function() {
         $('#createUserId').val(idUsuario);
     }
 });
+
+// Función para crear una cita
+function crearCita() {
+    const userId = $('#createUserId').val();
+    const fecha = $('#createDate').val();
+    const hora = $('#createTimeInput').val();
+    const motivo = $('#createReason').val();
+
+    $.ajax({
+        url: 'index.php?action=crear_cita',
+        method: 'POST',
+        data: {
+            idUser: userId,
+            fechaCita: new Date(fecha + ' ' + hora).toISOString(),
+            motivoCita: motivo
+        },
+        success: function(response) {
+            //if (response.success) {
+                alert('Cita creada exitosamente');
+                location.reload();
+            //} else {
+            //    alert('Error al crear la cita');
+            //}
+        }
+    });
+}
