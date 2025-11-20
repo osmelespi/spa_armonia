@@ -50,6 +50,12 @@ $citas = $citaController->obtenerCitas();
                                 <div class="appointment-user">
                                     <b>Nombre:</b> <?php echo $cita['nombre_usuario'] . ' ' . $cita['apellidos_usuario']; ?>
                                 </div>
+                                <div class="appointment-telefono">
+                                    <b>Teléfono:</b> <?php echo $cita['telefono_usuario']; ?>   
+                                </div>
+                                <div class="appointment-email">
+                                    <b>Email:</b> <?php echo $cita['email_usuario']; ?>
+                                </div>
                                 <?php
                                 // Formatear fecha en español (Intl preferred, fallback a setlocale/strftime)
                                 try {
@@ -83,10 +89,10 @@ $citas = $citaController->obtenerCitas();
                                 </div>
                             </div>
                             <div class="appointment-actions">
-                                <button class="btn btn-primary btn-sm" onclick="editAppointment(1)">
+                                <button class="btn btn-primary btn-sm" onclick="openEditModal(<?php echo $cita['idCita']; ?>)">
                                     <i class="bi bi-pencil-square"></i> Modificar
                                 </button>
-                                <button class="btn btn-danger btn-sm" onclick="deleteAppointment(1)">
+                                <button class="btn btn-danger btn-sm" onclick="borrarCita(<?php echo $cita['idCita']; ?>)">
                                     <i class="bi bi-trash"></i> Borrar
                                 </button>
                             </div>
@@ -164,5 +170,62 @@ $citas = $citaController->obtenerCitas();
             </div>
         </div>
     </div>
+    <!-- Modal Editar Cita -->
+    <div class="modal fade" id="editCitaModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-pencil-square"></i> Editar Cita
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm" autocomplete="off">
+                        <!-- Seleccionar Usuario -->
+                        <div class="mb-3">
+                            <label for="editBuscarCliente" class="form-label">Cliente</label>
+                            <p id="editClienteNombre"></p>
+                        </div>
+                        <input type="hidden" id="editIdCita" required>
+                        
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="editDate" class="form-label">
+                                    <i class="bi bi-calendar3"></i> Fecha
+                                </label>
+                                <input type="date" class="form-control" id="editDate" required>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">
+                                    <i class="bi bi-clock"></i> Hora
+                                </label>
+                                <input type="time" class="form-control" id="editTimeInput" required>
+                            </div>
+                        </div>
+
+                        <!-- Motivo -->
+                        <div class="mb-3">
+                            <label for="editReason" class="form-label">
+                                <i class="bi bi-chat-left-text"></i> Motivo de la Cita
+                            </label>
+                            <textarea class="form-control" id="editReason" rows="3" required></textarea>
+                            <small class="text-muted">
+                                <span id="editCharCount">0</span>/500 caracteres
+                            </small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="editarCita()">
+                        <i class="bi bi-check-circle"></i> Guardar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>  
 </main>
 <script src="/public/js/citasAdmin.js"></script>

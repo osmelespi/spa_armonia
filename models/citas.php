@@ -43,7 +43,14 @@ class Cita {
     } 
 
     public function getById($id) {
-        $query = "SELECT * FROM " . $this->table . " WHERE idCita = :id LIMIT 0,1";
+        $query = "SELECT 
+                    citas.*, 
+                    users_data.nombre as nombre_usuario,
+                    users_data.apellidos as apellidos_usuario
+                FROM " . $this->table . " as citas
+                LEFT JOIN users_data ON citas.idUser = users_data.idUser
+                WHERE citas.idCita = :id
+                ORDER BY citas.fecha_cita DESC";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id);
@@ -52,11 +59,21 @@ class Cita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getByUserId($idUser) {
-        $query = "SELECT * FROM " . $this->table . " WHERE idUser = :idUser ORDER BY fecha_cita DESC";
+    public function getByUsuario($usuario) {
+        $query = "SELECT 
+                    citas.*, 
+                    users_data.nombre as nombre_usuario,
+                    users_data.apellidos as apellidos_usuario,
+                    users_data.email as email_usuario,
+                    users_data.telefono as telefono_usuario
+                FROM " . $this->table . " as citas
+                LEFT JOIN users_data ON citas.idUser = users_data.idUser
+                WHERE users_data.nombre LIKE :nombreUsuario
+                ORDER BY citas.fecha_cita DESC";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':idUser', $idUser);
+        $likeUsuario = "%" . $usuario . "%";
+        $stmt->bindParam(':nombreUsuario', $likeUsuario);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -64,12 +81,11 @@ class Cita {
 
     public function update($id) {
         $query = "UPDATE " . $this->table . " 
-                  SET idUser = :idUser, fecha_cita = :fecha_cita, motivo_cita = :motivo_cita 
+                  SET fecha_cita = :fecha_cita, motivo_cita = :motivo_cita 
                   WHERE idCita = :id";
 
         $stmt = $this->db->prepare($query);
 
-        $stmt->bindParam(':idUser', $this->idUser);
         $stmt->bindParam(':fecha_cita', $this->fechaCita);
         $stmt->bindParam(':motivo_cita', $this->motivoCita);
         $stmt->bindParam(':id', $id);

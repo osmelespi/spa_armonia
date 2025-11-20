@@ -27,7 +27,7 @@ class citaController {
     }
 
     public function obtenerCitasPorUsuario() {
-        $citas = $this->cita->getByUserId($_POST['idUser']);
+        $citas = $this->cita->getByUsuario($_GET['nombre']);
         if ($citas) {
             echo json_encode(['success' => true, 'data' => $citas]);
         } else {
@@ -74,7 +74,6 @@ class citaController {
         try {
             $this->db->beginTransaction();
 
-            $this->cita->idUser = $_POST['idUser'];
             $this->cita->fechaCita = $_POST['fechaCita'];
             $this->cita->motivoCita = $_POST['motivoCita'];
 
