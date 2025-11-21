@@ -26,6 +26,10 @@ class citaController {
         }
     }
 
+    public function obtenerCitasPorIdUsuario($usuario) {
+        return $this->cita->getByIdUsuario($usuario);
+    }
+
     public function obtenerCitasPorUsuario() {
         $citas = $this->cita->getByUsuario($_GET['nombre']);
         if ($citas) {
@@ -119,9 +123,6 @@ class citaController {
             if ($this->db->inTransaction()) {
                 $this->db->rollBack();
             }
-            
-            // Log del error real para debugging
-            error_log('Error en borrarCita: ' . $e->getMessage());
             
             echo json_encode([
                 'success' => false, 

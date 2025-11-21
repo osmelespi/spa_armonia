@@ -59,6 +59,18 @@ class Cita {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByIdUsuario($idUsuario) {
+        $query = "SELECT * FROM " . $this->table . " 
+                WHERE idUser = :idUsuario
+                ORDER BY fecha_cita DESC";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idUsuario', $idUsuario);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getByUsuario($usuario) {
         $query = "SELECT 
                     citas.*, 

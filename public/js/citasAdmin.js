@@ -45,7 +45,7 @@ function crearCita() {
         method: 'POST',
         data: {
             idUser: userId,
-            fechaCita: new Date(fecha + ' ' + hora).toISOString(),
+            fechaCita: new Date(fecha + 'T' + hora + 'Z').toISOString(),
             motivoCita: motivo
         },
         dataType: 'json',
@@ -88,7 +88,7 @@ function openEditModal(idCita) {
 
 function editarCita() {
     const idCita = $('#editIdCita').val();
-    const fechaCita = new Date($('#editDate').val() + ' ' + $('#editTimeInput').val()).toISOString();
+    const fechaCita = new Date($('#editDate').val() + 'T' + $('#editTimeInput').val() + 'Z').toISOString();
     const motivoCita = $('#editReason').val();
 
     $.ajax({
