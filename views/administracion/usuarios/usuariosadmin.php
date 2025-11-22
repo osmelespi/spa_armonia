@@ -87,19 +87,19 @@
                                 <label for="createNombre" class="form-label">
                                     <i class="bi bi-person"></i> Nombre
                                 </label>
-                                <input type="text" class="form-control" id="createNombre" required>
+                                <input type="text" class="form-control" id="createNombre" name="nombre" required>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="createApellidos" class="form-label">
                                     <i class="bi bi-person"></i> Apellidos
                                 </label>
-                                <input type="text" class="form-control" id="createApellidos" required>
+                                <input type="text" class="form-control" id="createApellidos" name="apellidos" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="createSexo" class="form-label">
                                     <i class="bi bi-card-text"></i> Sexo
                                 </label>
-                                <select class="form-select" id="createSexo" required>
+                                <select class="form-select" id="createSexo" name="sexo" required>
                                     <option value="">Seleccionar sexo...</option>
                                     <option value="Hombre">Masculino</option>
                                     <option value="Mujer">Femenino</option>
@@ -110,31 +110,31 @@
                                 <label for="createEmail" class="form-label">
                                     <i class="bi bi-card-text"></i> Email
                                 </label>
-                                <input type="email" class="form-control" id="createEmail" required>
+                                <input type="email" class="form-control" id="createEmail" name="email" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createTelefono" class="form-label">
                                     <i class="bi bi-card-text"></i> Teléfono
                                 </label>
-                                <input type="tel" class="form-control" id="createTelefono" required>
+                                <input type="tel" class="form-control" id="createTelefono" name="telefono" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createFechaNacimiento" class="form-label">
                                     <i class="bi bi-card-text"></i> Fecha de Nacimiento
                                 </label>
-                                <input type="date" class="form-control" id="createFechaNacimiento" required>
+                                <input type="date" class="form-control" id="createFechaNacimiento" name="fecha_nacimiento" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createDireccion" class="form-label">
                                     <i class="bi bi-card-text"></i> Dirección
                                 </label>
-                                <input type="text" class="form-control" id="createDireccion" required>
+                                <input type="text" class="form-control" id="createDireccion" name="direccion" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createUsername" class="form-label">
                                     <i class="bi bi-at"></i> Nombre de Usuario
                                 </label>
-                                <input type="text" class="form-control" id="createUsername" required>
+                                <input type="text" class="form-control" id="createUsername" name="usuario" required>
                             </div>
                         </div>
                         <div class="row">
@@ -142,13 +142,13 @@
                                 <label for="createPassword" class="form-label">
                                     <i class="bi bi-lock"></i> Contraseña
                                 </label>
-                                <input type="password" class="form-control" id="createPassword" required>
+                                <input type="password" class="form-control" id="createPassword" name="password" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createRole" class="form-label">
                                     <i class="bi bi-shield-check"></i> Rol
                                 </label>
-                                <select class="form-select" id="createRole" required>
+                                <select class="form-select" id="createRole" name="role" required>
                                     <option value="">Seleccionar rol...</option>
                                     <option value="user">Usuario</option>
                                     <option value="admin">Administrador</option>
