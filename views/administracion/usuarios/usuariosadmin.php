@@ -83,11 +83,52 @@
                 <div class="modal-body">
                     <form id="createForm">
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="createName" class="form-label">
-                                    <i class="bi bi-person"></i> Nombre Completo
+                            <div class="col-md-4 mb-3">
+                                <label for="createNombre" class="form-label">
+                                    <i class="bi bi-person"></i> Nombre
                                 </label>
-                                <input type="text" class="form-control" id="createName" required>
+                                <input type="text" class="form-control" id="createNombre" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="createApellidos" class="form-label">
+                                    <i class="bi bi-person"></i> Apellidos
+                                </label>
+                                <input type="text" class="form-control" id="createApellidos" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="createSexo" class="form-label">
+                                    <i class="bi bi-card-text"></i> Sexo
+                                </label>
+                                <select class="form-select" id="createSexo" required>
+                                    <option value="">Seleccionar sexo...</option>
+                                    <option value="Hombre">Masculino</option>
+                                    <option value="Mujer">Femenino</option>
+                                    <option value="Sin determinar">Sin determinar</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="createEmail" class="form-label">
+                                    <i class="bi bi-card-text"></i> Email
+                                </label>
+                                <input type="email" class="form-control" id="createEmail" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="createTelefono" class="form-label">
+                                    <i class="bi bi-card-text"></i> Teléfono
+                                </label>
+                                <input type="tel" class="form-control" id="createTelefono" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="createFechaNacimiento" class="form-label">
+                                    <i class="bi bi-card-text"></i> Fecha de Nacimiento
+                                </label>
+                                <input type="date" class="form-control" id="createFechaNacimiento" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="createDireccion" class="form-label">
+                                    <i class="bi bi-card-text"></i> Dirección
+                                </label>
+                                <input type="text" class="form-control" id="createDireccion" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createUsername" class="form-label">
@@ -95,12 +136,6 @@
                                 </label>
                                 <input type="text" class="form-control" id="createUsername" required>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="createEmail" class="form-label">
-                                <i class="bi bi-envelope"></i> Correo Electrónico
-                            </label>
-                            <input type="email" class="form-control" id="createEmail" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">

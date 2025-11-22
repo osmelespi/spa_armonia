@@ -36,6 +36,9 @@ $noticias = $noticiaController->obtenerNoticias();
                     <div id="newsList" class="row g-4">
                         <?php if (!empty($noticias)): ?>
                             <?php foreach ($noticias as $noticia): ?>
+                                <?php
+                                $textoCorto = strlen($noticia['texto']) > 100 ? substr($noticia['texto'], 0, 100) . '...' : $noticia['texto'];
+                                ?>
                                 <!-- Cambié col-md-3 para que esté en el div correcto -->
                                 <div class="col-md-3">
                                     <div class="card news-item p-4" data-id="<?php echo htmlspecialchars($noticia['idNoticia']); ?>" data-search="<?php echo htmlspecialchars($noticia['titulo'] . ' ' . $noticia['texto']); ?>">
@@ -47,7 +50,7 @@ $noticias = $noticiaController->obtenerNoticias();
                                                 <b>Título:</b> <?php echo htmlspecialchars($noticia['titulo']); ?>
                                             </div>
                                             <div class="news-content">
-                                                <b>Contenido:</b> <?php echo htmlspecialchars($noticia['texto']); ?>
+                                                <b>Contenido:</b> <?php echo htmlspecialchars($textoCorto); ?>
                                             </div>
                                         </div>
                                         <div class="user-actions mt-3">

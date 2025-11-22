@@ -15,7 +15,9 @@ class Noticia {
     }
 
     public function getAll() {
-        $query = "SELECT * FROM " . $this->table . " ORDER BY fecha DESC";
+        $query = "SELECT noticias.*, CONCAT_WS(' ', users_data.nombre, users_data.apellidos) AS autor FROM " . $this->table . " 
+        LEFT JOIN users_data ON noticias.idUser = users_data.idUser
+        ORDER BY fecha DESC";
 
         $stmt = $this->db->prepare($query);
         $stmt->execute();
