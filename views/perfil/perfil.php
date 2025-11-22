@@ -117,13 +117,14 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
             </form>
             <form id="passwordForm">
                 <!-- Contraseña Actual -->
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <div class="mb-4">
                     <label for="currentPassword" class="form-label">
                         <i class="bi bi-lock"></i> Contraseña Actual
                     </label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="currentPassword" 
-                                placeholder="Ingresa tu contraseña actual" required>
+                                placeholder="Ingresa tu contraseña actual" name="contrasena_actual" required>
                         <button class="btn btn-outline-secondary toggle-password" type="button" 
                                 onclick="togglePassword('currentPassword')">
                             <i class="bi bi-eye" id="currentPassword-icon"></i>
@@ -138,7 +139,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                     </label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="newPassword" 
-                                placeholder="Ingresa tu nueva contraseña" required>
+                                placeholder="Ingresa tu nueva contraseña" name="nueva_contrasena" required minlength="6">
                         <button class="btn btn-outline-secondary toggle-password" type="button" 
                                 onclick="togglePassword('newPassword')">
                             <i class="bi bi-eye" id="newPassword-icon"></i>
@@ -149,16 +150,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                     <!-- Requisitos de contraseña -->
                     <div class="password-requirements">
                         <small class="requirement" id="req-length">
-                            <i class="bi bi-circle"></i> Mínimo 8 caracteres
-                        </small><br>
-                        <small class="requirement" id="req-uppercase">
-                            <i class="bi bi-circle"></i> Al menos una mayúscula
-                        </small><br>
-                        <small class="requirement" id="req-lowercase">
-                            <i class="bi bi-circle"></i> Al menos una minúscula
-                        </small><br>
-                        <small class="requirement" id="req-number">
-                            <i class="bi bi-circle"></i> Al menos un número
+                            <i class="bi bi-circle"></i> Mínimo 6 caracteres
                         </small>
                     </div>
                 </div>

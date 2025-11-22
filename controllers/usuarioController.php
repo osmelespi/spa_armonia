@@ -123,6 +123,45 @@ class UsuarioController {
             echo json_encode($userDataList);
         }
     }
+
+    public function cambiarContrasena() {
+        try {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $userId = $_POST['user_id'];
+                $contrasenaactual = $_POST['contrasena_actual'];
+                $nuevaContrasena = $_POST['nueva_contrasena'];
+                
+                $usuario = $this->userLogin->getById($userId);
+                if(!$usuario) {
+                    throw new Exception("Usuario no encontrado");
+                } else {
+                    if(password_verify($nuevaContrasena, $usuario['contrasena'])) {
+                        throw new Exception("La nueva contraseña no puede ser igual a la anterior");
+                    } else if(password_verify($contrasenaactual, $usuario['contrasena'])) {
+                        $this->userLogin->contrasena = password_hash($nuevaContrasena, PASSWORD_BCRYPT);
+                    } else {
+                        throw new Exception("La contraseña actual es incorrecta");
+                    }
+                }
+
+                $this->userLogin->idUser = $userId;
+                $this->userLogin->usuario = $usuario['usuario'];
+                $this->userLogin->rol = $usuario['rol'];
+
+                $this->userLogin->update($userId);
+
+                session_unset();
+                session_destroy();
+
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Contraseña cambiada correctamente']);
+            }
+        } catch (Exception $e) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+       
+    }
 }
 
 ?>

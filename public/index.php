@@ -57,6 +57,11 @@ switch ($action) {
         $usuarioController = new UsuarioController();
         $usuarioController->actualizarPerfil();
         break;
+    case 'cambiar_contrasena':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->cambiarContrasena();
+        break;  
     case 'citas':
         require_once '../views/layouts/header.php';
         require_once '../views/citaciones/citas.php';

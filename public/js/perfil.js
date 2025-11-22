@@ -73,3 +73,32 @@ $('#profileForm').on('submit', function(event) {
         }
     });
 });
+
+$('#passwordForm').on('submit', function(event) {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
+    
+    if ($('#newPassword').val() !== $('#confirmPassword').val()) {
+        alert('La nueva contraseña y la confirmación no coinciden');
+        return;
+    }
+    $.ajax({
+        url: 'index.php?action=cambiar_contrasena',
+        method: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                alert('Contraseña cambiada con éxito');
+                window.location.href = 'index.php?action=perfil';
+            } else {
+                console.log(response);
+                console.error('Error al cambiar la contraseña:', response.message);
+                alert(response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud AJAX:', error);
+            alert('Ocurrió un error al cambiar la contraseña');
+        }
+    });
+});
