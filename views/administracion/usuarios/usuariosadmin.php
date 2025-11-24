@@ -1,3 +1,9 @@
+<?php
+require_once '../controllers/usuarioController.php';
+
+$usuarioController = new UsuarioController();
+$usuarios = $usuarioController->listarUsuarios();
+?>
 <main>
     <div class="container">
         <div class="row justify-content-center">
@@ -16,10 +22,7 @@
                         <div class="col-md-8">
                             <div class="search-box">
                                 <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="bi bi-search"></i>
-                                    </span>
-                                    <input type="text" class="form-control" id="searchInput" 
+                                    <input type="text" class="form-control" id="buscarUsuarios" 
                                            placeholder="Buscar por nombre, email o nombre de usuario...">
                                 </div>
                             </div>
@@ -32,34 +35,40 @@
                     </div>
 
                     <!-- Lista de Usuarios -->
-                    <div id="usersList" class="row g-4">
-                        <!-- Usuario 1 -->
-                        <div class= "card user-item p-4 col-md-3" data-id="1" data-search="juan garcía lópez juan.garcia@email.com juangarcia">
+                    <div id="usersList" class="row gap-4">
+                        <!-- Usuario 1 --> 
+                        <?php foreach($usuarios as $usuario): ?>
+                        <div class= "card user-item p-4 col-md-3" data-id="<?php echo $usuario['idUser']; ?>" data-search="<?php echo $usuario['nombre'] . ' ' . $usuario['apellidos'] . ' ' . $usuario['email'] . ' ' . $usuario['usuario']; ?>">
                             <div class="user-info">
                                 <div class="user-name">
-                                <b>Nombre:</b> Juan García López
+                                <b>Nombre:</b> <?php echo $usuario['nombre'] . ' ' . $usuario['apellidos']; ?>
                                 </div>
                                 <div class="user-email">
-                                 <b>Email:</b> juan.garcia@email.com
+                                 <b>Email:</b> <?php echo $usuario['email']; ?>
                                 </div>
                                 <div class="user-username">
-                                 <b>Usuario:</b> juangarcia
+                                 <b>Usuario:</b> <?php echo $usuario['usuario']; ?>
                                 </div>
                                 <div class="mt-2">
-                                    <span class="role-badge role-admin badge rounded-pill text-bg-success my-2">
-                                     Administrador
-                                    </span>
+                                    <?php
+                                    if ($usuario['rol'] === 'admin') {
+                                        echo '<span class="role-badge badge rounded-pill text-bg-success my-2">Administrador</span>';
+                                    } else {
+                                        echo '<span class="role-badge badge rounded-pill text-bg-primary my-2">Usuario</span>';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <div class="user-actions">
-                                <button class="btn btn-primary btn-sm" onclick="editUser(1)">
+                                <button class="btn btn-primary btn-sm" onclick="editUser(<?php echo $usuario['idUser']; ?>)">
                                      Modificar
                                 </button>
-                                <button class="btn btn-danger btn-sm" onclick="deleteUser(1)">
+                                <button class="btn btn-danger btn-sm" onclick="deleteUser(<?php echo $usuario['idUser']; ?>)">
                                      Borrar
                                 </button>
                             </div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                     <!-- Mensaje sin resultados -->
                     <div id="noResults" class="alert alert-warning text-center" style="display: none;">
@@ -106,25 +115,25 @@
                                     <option value="Sin determinar">Sin determinar</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-8 mb-3">
                                 <label for="createEmail" class="form-label">
                                     <i class="bi bi-card-text"></i> Email
                                 </label>
                                 <input type="email" class="form-control" id="createEmail" name="email" required>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="createTelefono" class="form-label">
                                     <i class="bi bi-card-text"></i> Teléfono
                                 </label>
                                 <input type="tel" class="form-control" id="createTelefono" name="telefono" required>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-5 mb-3">
                                 <label for="createFechaNacimiento" class="form-label">
                                     <i class="bi bi-card-text"></i> Fecha de Nacimiento
                                 </label>
                                 <input type="date" class="form-control" id="createFechaNacimiento" name="fecha_nacimiento" required>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-7 mb-3">
                                 <label for="createDireccion" class="form-label">
                                     <i class="bi bi-card-text"></i> Dirección
                                 </label>
@@ -169,3 +178,4 @@
         </div>
     </div>
 </main>
+<script src="/public/js/usuarios.js"></script>

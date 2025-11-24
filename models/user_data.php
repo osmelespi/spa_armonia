@@ -17,6 +17,15 @@ class UserData {
         $this->db = $database;
     }
 
+    public function getAll() {
+        $query = "SELECT users_data.*, users_login.usuario as usuario, users_login.rol as rol FROM " . $this->table ."
+        LEFT JOIN users_login ON users_data.idUser = users_login.idUser
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function save() {
         $query = "INSERT INTO " . $this->table . " (nombre, apellidos, email, telefono, fecha_nacimiento, direccion, sexo) 
                   VALUES (:nombre, :apellidos, :email, :telefono, :fecha_nacimiento, :direccion, :sexo)";
@@ -45,7 +54,9 @@ class UserData {
     }
 
     public function searchByName($name) {
-        $query = "SELECT * FROM " . $this->table . " WHERE LOWER(nombre) LIKE :name";
+        $query = "SELECT users_data.*, users_login.usuario as usuario, users_login.rol as rol FROM " . $this->table . "
+        LEFT JOIN users_login ON users_data.idUser = users_login.idUser
+        WHERE LOWER(nombre) LIKE :name";
         $stmt = $this->db->prepare($query);
         $name = strtolower($name) . "%";
         $stmt->bindParam(':name', $name);

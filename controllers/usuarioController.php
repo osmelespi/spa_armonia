@@ -15,6 +15,10 @@ class UsuarioController {
         $this->userLogin = new UserLogin($this->db);
     }
 
+    public function listarUsuarios() {
+        return $this->userData->getAll();
+    }
+
     // Métodos para manejar las operaciones de usuario
     public function registrarUsuario() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -116,7 +120,10 @@ class UsuarioController {
             foreach($usuarios as $usuario) {
                 $userDataList[] = [
                     'id' => $usuario['idUser'],
-                    'nombre' => $usuario['nombre'] . ' ' . $usuario['apellidos']
+                    'nombre' => $usuario['nombre'] . ' ' . $usuario['apellidos'],
+                    'email' => $usuario['email'],
+                    'usuario' => $usuario['usuario'],
+                    'rol' => $usuario['rol']
                 ];
             }
             header('Content-Type: application/json');
