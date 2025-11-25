@@ -47,6 +47,11 @@ switch ($action) {
         $usuarioController = new UsuarioController();
         $usuarioController->buscarUsuarios();
         break;
+    case 'crear_usuario':
+        require_once '../controllers/usuarioController.php';
+        $usuarioController = new UsuarioController();
+        $usuarioController->crearUsuario();
+        break;
     case 'perfil':
         require_once '../views/layouts/header.php';
         require_once '../views/perfil/perfil.php';

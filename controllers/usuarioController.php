@@ -169,6 +169,41 @@ class UsuarioController {
         }
        
     }
+
+      public function crearUsuario() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            try {
+                $this->db->beginTransaction();
+                // Guardar datos personales
+                $this->userData->nombre = $_POST['nombre'];
+                $this->userData->apellidos = $_POST['apellidos'];
+                $this->userData->email = $_POST['email'];
+                $this->userData->telefono = $_POST['telefono'];
+                $this->userData->fechaNacimiento = $_POST['fecha_nacimiento'];
+                $this->userData->direccion = $_POST['direccion'];
+                $this->userData->sexo = $_POST['sexo'];
+                $this->userData->save();
+
+                // Obtener el ID del usuario recién creado
+                $idUser = $this->db->lastInsertId();
+
+                // Guardar datos de login
+                $this->userLogin->idUser = $idUser;
+                $this->userLogin->usuario = $_POST['usuario'];
+                $this->userLogin->contrasena = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                $this->userLogin->rol = $_POST['rol'];
+                $this->userLogin->save();
+
+                $this->db->commit();
+
+                echo json_encode(['success' => true, 'message' => 'Usuario creado correctamente']);
+            } catch (Exception $e) {
+                $this->db->rollBack();
+                echo json_encode(['success' => false, 'message' => 'Error al crear el usuario']);
+            }
+            
+        }
+    }
 }
 
 ?>

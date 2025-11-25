@@ -140,10 +140,10 @@ $usuarios = $usuarioController->listarUsuarios();
                                 <input type="text" class="form-control" id="createDireccion" name="direccion" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="createUsername" class="form-label">
+                                <label for="createUsuario" class="form-label">
                                     <i class="bi bi-at"></i> Nombre de Usuario
                                 </label>
-                                <input type="text" class="form-control" id="createUsername" name="usuario" required>
+                                <input type="text" class="form-control" id="createUsuario" name="usuario" required>
                             </div>
                         </div>
                         <div class="row">
@@ -154,10 +154,10 @@ $usuarios = $usuarioController->listarUsuarios();
                                 <input type="password" class="form-control" id="createPassword" name="password" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="createRole" class="form-label">
+                                <label for="createRol" class="form-label">
                                     <i class="bi bi-shield-check"></i> Rol
                                 </label>
-                                <select class="form-select" id="createRole" name="role" required>
+                                <select class="form-select" id="createRol" name="role" required>
                                     <option value="">Seleccionar rol...</option>
                                     <option value="user">Usuario</option>
                                     <option value="admin">Administrador</option>
@@ -170,7 +170,7 @@ $usuarios = $usuarioController->listarUsuarios();
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     Cancelar
                     </button>
-                    <button type="button" class="btn btn-success" onclick="createUser()">
+                    <button type="button" class="btn btn-success" onclick="crearUsuario()">
                     Crear Usuario
                     </button>
                 </div>
