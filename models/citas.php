@@ -1,5 +1,5 @@
 <?php
-class Cita {
+class Citas {
     private $db;
     private $table = 'citas';
 
@@ -113,6 +113,16 @@ class Cita {
 
         return $stmt->execute();
     }
+
+      public function deleteByUserId($id) {
+        $query = "DELETE FROM " . $this->table . " WHERE idUser = :id";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id);
+
+        return $stmt->execute();
+    }
+
 
 }
 ?>

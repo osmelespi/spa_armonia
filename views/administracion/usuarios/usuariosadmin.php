@@ -1,6 +1,11 @@
 <?php
 require_once '../controllers/usuarioController.php';
 
+if($_SESSION['rol'] == 'user'){
+    header("Location: index.php?action=home");
+    exit();
+}
+
 $usuarioController = new UsuarioController();
 $usuarios = $usuarioController->listarUsuarios();
 ?>
@@ -60,7 +65,7 @@ $usuarios = $usuarioController->listarUsuarios();
                                 </div>
                             </div>
                             <div class="user-actions">
-                                <button class="btn btn-primary btn-sm" onclick="editUser(<?php echo $usuario['idUser']; ?>)">
+                                <button class="btn btn-primary btn-sm" onclick="openEditModal(<?php echo $usuario['idUser']; ?>)">
                                      Modificar
                                 </button>
                                 <button class="btn btn-danger btn-sm" onclick="deleteUser(<?php echo $usuario['idUser']; ?>)">
@@ -177,5 +182,92 @@ $usuarios = $usuarioController->listarUsuarios();
             </div>
         </div>
     </div>
+    
+    <!-- Modal editar Usuario -->
+
+    <div class="modal fade" id="editUserModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-person-lines-fill"></i> Editar Usuario
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editUserId" name="idUser">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="editNombre" class="form-label">
+                                    <i class="bi bi-person"></i> Nombre
+                                </label>
+                                <input type="text" class="form-control" id="editNombre" name="nombre" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="editApellidos" class="form-label">
+                                    <i class="bi bi-person"></i> Apellidos
+                                </label>
+                                <input type="text" class="form-control" id="editApellidos" name="apellidos" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="editSexo" class="form-label">
+                                    <i class="bi bi-card-text"></i> Sexo
+                                </label>
+                                <select class="form-select" id="editSexo" name="sexo" required>
+                                    <option value="">Seleccionar sexo...</option>
+                                    <option value="Hombre">Masculino</option>
+                                    <option value="Mujer">Femenino</option>
+                                    <option value="Sin determinar">Sin determinar</option>
+                                </select>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <label for="editEmail" class="form-label">
+                                    <i class="bi bi-card-text"></i> Email
+                                </label>    
+                                <input type="email" class="form-control" id="editEmail" name="email" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="editTelefono" class="form-label">
+                                    <i class="bi bi-card-text"></i> Teléfono
+                                </label>
+                                <input type="text" class="form-control" id="editTelefono" name="telefono" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="editFechaNacimiento" class="form-label">
+                                    <i class="bi bi-card-text"></i> Fecha de Nacimiento
+                                </label>
+                                <input type="date" class="form-control" id="editFechaNacimiento" name="fecha_nacimiento" required>
+                            </div>
+                            <div class="col-md-7 mb-3">
+                                <label for="editDireccion" class="form-label">
+                                    <i class="bi bi-card-text"></i> Dirección
+                                </label>
+                                <input type="text" class="form-control" id="editDireccion" name="direccion" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="editRol" class="form-label">
+                                    <i class="bi bi-shield-check"></i> Rol
+                                </label>
+                                <select class="form-select" id="editRol" name="rol" required>
+                                    <option value="">Seleccionar rol...</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="user">Usuario</option>
+                                </select>
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="actualizarUsuario()">
+                        Guardar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
 <script src="/public/js/usuarios.js"></script>

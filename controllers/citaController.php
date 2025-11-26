@@ -10,7 +10,7 @@ class citaController {
     public function __construct() {
         $database = new Database();
         $this->db = $database->getConnection();
-        $this->cita = new Cita($this->db);
+        $this->cita = new Citas($this->db);
     }
 
     public function obtenerCitas() {

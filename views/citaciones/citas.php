@@ -5,6 +5,10 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php?action=login");
     exit();
 }
+if($_SESSION['rol'] == 'admin'){
+    header("Location: index.php?action=home");
+    exit();
+}
 
 $citaController = new CitaController();
 $citas = $citaController->obtenerCitasPorIdUsuario($_SESSION['user_id']);

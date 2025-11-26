@@ -2,17 +2,20 @@
 require_once '../config/database.php';
 require_once '../models/user_data.php';
 require_once '../models/user_login.php';
+require_once '../models/citas.php';
 
 class UsuarioController {
     private $db;
     private $userData;
     private $userLogin;
+    private $citas;
 
     public function __construct() {
         $database = new Database();
         $this->db = $database->getConnection();
         $this->userData = new UserData($this->db);
         $this->userLogin = new UserLogin($this->db);
+        $this->citas = new Citas($this->db);
     }
 
     public function listarUsuarios() {
@@ -170,7 +173,7 @@ class UsuarioController {
        
     }
 
-      public function crearUsuario() {
+    public function crearUsuario() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             try {
                 $this->db->beginTransaction();
@@ -204,6 +207,82 @@ class UsuarioController {
             
         }
     }
-}
 
+    public function obtenerUsuario() {
+        if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $usuarioData = $this->userData->getById($id);
+            $usuarioLoginData = $this->userLogin->getById($id);
+
+            if($usuarioData && $usuarioLoginData) {
+                $usuario = [
+                    'idUser' => $usuarioData['idUser'],
+                    'nombre' => $usuarioData['nombre'],
+                    'apellidos' => $usuarioData['apellidos'],
+                    'email' => $usuarioData['email'],
+                    'telefono' => $usuarioData['telefono'],
+                    'fecha_nacimiento' => $usuarioData['fecha_nacimiento'],
+                    'direccion' => $usuarioData['direccion'],
+                    'sexo' => $usuarioData['sexo'],
+                    'rol' => $usuarioLoginData['rol']
+                ];
+
+                header('Content-Type: application/json');
+                echo json_encode($usuario);
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Usuario no encontrado']);
+            }
+        }
+    }
+
+    public function editarUsuario() {
+        try {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $this->userData->nombre = $_POST['nombre'];
+                $this->userData->apellidos = $_POST['apellidos'];
+                $this->userData->email = $_POST['email'];
+                $this->userData->telefono = $_POST['telefono'];
+                $this->userData->fechaNacimiento = $_POST['fecha_nacimiento'];
+                $this->userData->direccion = $_POST['direccion'];
+                $this->userData->sexo = $_POST['sexo'];
+                $this->userData->update($_POST['user_id']);
+
+                $userLoginData = $this->userLogin->getById($_POST['user_id']);
+                if(!$userLoginData) {
+                    throw new Exception("Usuario no encontrado");
+                }
+                $this->userLogin->contrasena = $userLoginData['contrasena']; // Mantener la contraseña actual
+                $this->userLogin->rol = $_POST['rol'];
+                $this->userLogin->update($_POST['user_id']);
+
+                if($_SESSION['user_id'] == $_POST['user_id']) {
+                   $_SESSION['rol'] = $_POST['rol']; 
+                }
+
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Perfil actualizado correctamente']);
+            }
+        } catch (Exception $e) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+       
+    }
+
+    public function borrarUsuario(){
+        try{
+            $this->citas->deleteByUserId($_POST["user_id"]);
+            $this->userLogin->delete($_POST["user_id"]);
+            $this->userData->delete($_POST["user_id"]);
+        
+            header('Content-Type: application/json');
+            echo json_encode(['success' => true, 'message' => 'Se ha borrado el usuario correctamente']);
+        } catch (Exception $e) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+
+    }
+}
 ?>

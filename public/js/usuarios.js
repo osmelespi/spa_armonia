@@ -92,3 +92,97 @@ function crearUsuario() {
         }
     });
 }
+
+function openEditModal(userId) {
+    // Lógica para abrir el modal de edición
+    // Puedes usar AJAX para obtener los datos del usuario y rellenar el formulario
+    $.ajax({
+        url: 'index.php?action=obtener_usuario',
+        type: 'GET',
+        data: { id: userId },
+        dataType: 'json',
+        success: function(response) {
+                $("#editUserId").val(response.idUser);
+                $("#editNombre").val(response.nombre);
+                $("#editApellidos").val(response.apellidos);
+                $("#editSexo").val(response.sexo);
+                $("#editSexo").sele
+                $("#editEmail").val(response.email);
+                $("#editTelefono").val(response.telefono);
+                $("#editFechaNacimiento").val(response.fecha_nacimiento);
+                $("#editDireccion").val(response.direccion);
+                $("#editRol").val(response.rol);
+                // Abrir el modal
+                $("#editUserModal").modal("show");
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud:', error);
+            alert('Error en la solicitud: ' + error);
+        }
+    });
+}
+
+function actualizarUsuario() {
+    let userId = $("#editUserId").val();
+    let nombre = $("#editNombre").val();
+    let apellidos = $("#editApellidos").val();
+    let sexo = $("#editSexo").val();
+    let email = $("#editEmail").val();
+    let telefono = $("#editTelefono").val();
+    let fechaNacimiento = $("#editFechaNacimiento").val();
+    let direccion = $("#editDireccion").val();
+    let rol = $("#editRol").val();
+
+    $.ajax({
+        url: 'index.php?action=editar_usuario',
+        type: 'POST',
+        data: {
+            user_id: userId,
+            nombre: nombre,
+            apellidos: apellidos,
+            sexo: sexo,
+            email: email,
+            telefono: telefono,
+            fecha_nacimiento: fechaNacimiento,
+            direccion: direccion,
+            rol: rol
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                alert(response.message);
+                location.reload();
+            } else {
+                alert(response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud:', xhr.responseText);
+            alert('Error en la solicitud: ' + error);
+        }
+    });
+}   
+
+function deleteUser(userId){
+     if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+        $.ajax({
+            url: 'index.php?action=borrar_usuario',
+            method: 'POST', 
+            data: { user_id: userId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    alert('Usuario eliminado exitosamente');
+                    location.reload();
+                } else {
+                    alert('Error al eliminar la usuario');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la solicitud:', xhr.responseText);
+                console.error('Error al eliminar usuario:', error);
+                alert('Ocurrió un error al eliminar usuario');
+            }
+        });
+    }
+}

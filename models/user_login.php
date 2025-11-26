@@ -66,7 +66,7 @@ class UserLogin {
     }
 
     public function delete($id) {
-        $query = "DELETE FROM " . $this->table . " WHERE id_user = :id";
+        $query = "DELETE FROM " . $this->table . " WHERE idUser = :id";
         
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id);
