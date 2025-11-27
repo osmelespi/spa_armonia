@@ -125,10 +125,6 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                     <div class="input-group">
                         <input type="password" class="form-control" id="currentPassword" 
                                 placeholder="Ingresa tu contraseña actual" name="contrasena_actual" required>
-                        <button class="btn btn-outline-secondary toggle-password" type="button" 
-                                onclick="togglePassword('currentPassword')">
-                            <i class="bi bi-eye" id="currentPassword-icon"></i>
-                        </button>
                     </div>
                 </div>
 
@@ -140,10 +136,6 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                     <div class="input-group">
                         <input type="password" class="form-control" id="newPassword" 
                                 placeholder="Ingresa tu nueva contraseña" name="nueva_contrasena" required minlength="6">
-                        <button class="btn btn-outline-secondary toggle-password" type="button" 
-                                onclick="togglePassword('newPassword')">
-                            <i class="bi bi-eye" id="newPassword-icon"></i>
-                        </button>
                     </div>
                     <div class="password-strength" id="passwordStrength"></div>
                     
@@ -163,10 +155,6 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                     <div class="input-group">
                         <input type="password" class="form-control" id="confirmPassword" 
                                 placeholder="Confirma tu nueva contraseña" required>
-                        <button class="btn btn-outline-secondary toggle-password" type="button" 
-                                onclick="togglePassword('confirmPassword')">
-                            <i class="bi bi-eye" id="confirmPassword-icon"></i>
-                        </button>
                     </div>
                     <small class="text-muted" id="matchMessage"></small>
                 </div>

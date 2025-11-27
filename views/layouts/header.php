@@ -35,15 +35,15 @@ $enlace=$_GET['action'] ?? 'home';
                                 <a class="' . ($enlace === 'citas' ? 'enlaceactivo' : '') . '" href="?action=citas">Citas</a>
                               </li>';
                     } else if ($_SESSION['rol'] === 'admin') {
-                        $noticias = '<li>
-                            <a class="' . ($enlace === 'noticias_admin' ? 'enlaceactivo' : '') . '" href="?action=noticias_admin">Noticias</a>
-                        </li>';
                         echo $noticias;
                         echo '<li>
                                 <a class="' . ($enlace === 'citas_admin' ? 'enlaceactivo' : '') . '" href="?action=citas_admin">Citas</a>
                               </li>
                               <li>
                                 <a class="' . ($enlace === 'usuarios_admin' ? 'enlaceactivo' : '') . '" href="?action=usuarios_admin">Usuarios</a>
+                              </li>
+                              <li>
+                                <a class="' . ($enlace === 'noticias_admin' ? 'enlaceactivo' : '') . '" href="?action=noticias_admin">Gestión de Noticias</a>
                               </li>';
                     }
                 } else {

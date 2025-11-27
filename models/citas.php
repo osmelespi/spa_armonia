@@ -21,6 +21,7 @@ class Citas {
                     users_data.telefono as telefono_usuario
                 FROM " . $this->table . " as citas
                 LEFT JOIN users_data ON citas.idUser = users_data.idUser
+                WHERE citas.fecha_cita >= CURDATE()
                 ORDER BY citas.fecha_cita DESC";
 
         $stmt = $this->db->prepare($query);

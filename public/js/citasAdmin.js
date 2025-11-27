@@ -39,25 +39,32 @@ function crearCita() {
     const fecha = $('#createDate').val();
     const hora = $('#createTimeInput').val();
     const motivo = $('#createReason').val();
+    const fechaHora = new Date(fecha + 'T' + hora + 'Z').toISOString();
 
-    $.ajax({
-        url: 'index.php?action=crear_cita',
-        method: 'POST',
-        data: {
-            idUser: userId,
-            fechaCita: new Date(fecha + 'T' + hora + 'Z').toISOString(),
-            motivoCita: motivo
-        },
-        dataType: 'json',
-        success: function(response) {            
-            if (response.success) {
-                alert('Cita creada exitosamente');
-                location.reload();
-            } else {
-                alert('Error al crear la cita');
+
+    if (soloFecha(fechaHora) <= soloFecha(new Date())) {
+        alert("No se puede crear la cita con la fecha anterior a la de hoy")
+    } else {
+        $.ajax({
+            url: 'index.php?action=crear_cita',
+            method: 'POST',
+            data: {
+                idUser: userId,
+                fechaCita: fechaHora,
+                motivoCita: motivo
+            },
+            dataType: 'json',
+            success: function(response) {            
+                if (response.success) {
+                    alert('Cita creada exitosamente');
+                    location.reload();
+                } else {
+                    alert('Error al crear la cita');
+                }
             }
-        }
-    });
+        });
+    }
+ 
 }
 
 function openEditModal(idCita) {
@@ -91,29 +98,34 @@ function editarCita() {
     const fechaCita = new Date($('#editDate').val() + 'T' + $('#editTimeInput').val() + 'Z').toISOString();
     const motivoCita = $('#editReason').val();
 
-    $.ajax({
-        url: 'index.php?action=editar_cita',
-        method: 'POST',
-        data: { 
-            idCita: idCita,
-            fechaCita: fechaCita,
-            motivoCita: motivoCita
-         },
-        dataType: 'json',
-        success: function(response) {
-            if (response.success) {
-                alert('Cita editada exitosamente');
-                location.reload();
-            } else {
-                alert('Error al editar la cita');
+     if (soloFecha(fechaCita) <= soloFecha(new Date())) {
+        alert("No se puede modificar la cita con la fecha anterior a la de hoy")
+    } else {
+        $.ajax({
+            url: 'index.php?action=editar_cita',
+            method: 'POST',
+            data: { 
+                idCita: idCita,
+                fechaCita: fechaCita,
+                motivoCita: motivoCita
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    alert('Cita editada exitosamente');
+                    location.reload();
+                } else {
+                    alert('Error al editar la cita');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la solicitud:', error);
+                console.log('Respuesta del servidor:', xhr.responseText);
+                alert('Error en la solicitud: ' + error);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error('Error en la solicitud:', error);
-            console.log('Respuesta del servidor:', xhr.responseText);
-            alert('Error en la solicitud: ' + error);
-        }
-    });
+        });
+    }
+
 }
 
 function borrarCita(idCita) {
@@ -184,3 +196,10 @@ $('#searchInput').on('input', function() {
         }
     });
 });
+
+function soloFecha(fecha) {
+    const nuevaFecha = new Date(fecha);
+    nuevaFecha.setHours(0, 0, 0, 0);
+    return nuevaFecha;
+}
+
