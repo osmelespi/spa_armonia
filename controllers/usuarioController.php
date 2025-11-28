@@ -105,6 +105,9 @@ class UsuarioController {
                 
                 $this->userData->update($_POST['user_id']);
 
+                $_SESSION['nombre'] = $_POST['nombre'];
+                $_SESSION['apellidos'] = $_POST['apellidos'];
+
                 header('Content-Type: application/json');
                 echo json_encode(['success' => true, 'message' => 'Perfil actualizado correctamente']);
             }

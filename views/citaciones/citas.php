@@ -59,9 +59,6 @@ $citas = $citaController->obtenerCitasPorIdUsuario($_SESSION['user_id']);
                     </label>
                     <textarea class="form-control" id="appointmentReason" rows="4" 
                                 placeholder="Describe brevemente el motivo de tu cita..." required></textarea>
-                    <small class="text-muted">
-                        <span id="charCount">0</span>/500 caracteres
-                    </small>
                 </div>
 
                 <!-- Botón Solicitar -->

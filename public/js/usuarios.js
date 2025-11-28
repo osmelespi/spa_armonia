@@ -51,6 +51,12 @@ $("#buscarUsuarios").on("input", function() {
 
 });
 
+$('#createForm').submit(function(e) {
+    e.preventDefault();
+
+    crearUsuario();
+});
+
 function crearUsuario() {
     let nombre = $("#createNombre").val();
     let apellidos = $("#createApellidos").val();
@@ -121,6 +127,12 @@ function openEditModal(userId) {
         }
     });
 }
+
+$('#editForm').submit(function(e) {
+    e.preventDefault();
+
+    actualizarUsuario()
+});
 
 function actualizarUsuario() {
     let userId = $("#editUserId").val();

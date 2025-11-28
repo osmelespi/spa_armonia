@@ -41,7 +41,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                             <i class="bi bi-person"></i> Nombre
                         </label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
-                                value="<?php echo $perfilData['nombre']; ?>" disabled required>
+                                value="<?php echo $perfilData['nombre']; ?>" maxlength="45" minlength="3" disabled required>
                     </div>
                     <!-- Apellidos -->
                     <div class="col-md-6">
@@ -49,7 +49,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                             <i class="bi bi-person"></i> Apellidos
                         </label>
                         <input type="text" class="form-control" id="apellidos" name="apellidos"
-                                value="<?php echo $perfilData['apellidos']; ?>" disabled required>
+                                value="<?php echo $perfilData['apellidos']; ?>" maxlength="60" minlength="2" disabled required>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                         <i class="bi bi-envelope"></i> Correo Electrónico
                     </label>
                     <input type="email" class="form-control" id="email" name="email"
-                            value="<?php echo $perfilData['email']; ?>" disabled required>
+                            value="<?php echo $perfilData['email']; ?>" maxlength="100" disabled required>
                 </div>
 
                 <!-- Teléfono -->
@@ -68,7 +68,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                         <i class="bi bi-telephone"></i> Teléfono
                     </label>
                     <input type="tel" class="form-control" id="telefono" name="telefono"
-                            value="<?php echo $perfilData['telefono']; ?>" disabled required>
+                            value="<?php echo $perfilData['telefono']; ?>" pattern="[6-9]\d{8}" disabled required>
                 </div>
 
                 <!-- Fecha de Nacimiento -->
@@ -99,7 +99,7 @@ $perfilData = $usuarioController->obtenerPerfil($_SESSION['user_id']);
                     <label for="direccion" class="form-label">
                         <i class="bi bi-house"></i> Dirección
                     </label>
-                    <textarea class="form-control" id="direccion" name="direccion" rows="2" disabled required><?php echo $perfilData['direccion']; ?></textarea>
+                    <textarea class="form-control" id="direccion" name="direccion" rows="2" minlength="10" maxlength="100" disabled required><?php echo $perfilData['direccion']; ?></textarea>
                 </div>
 
                 <!-- Botones -->

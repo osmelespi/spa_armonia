@@ -7,22 +7,22 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input id="nombre" name="nombre" type="text" class="form-control" required maxlength="100">
+                        <input id="nombre" name="nombre" type="text" class="form-control" required maxlength="40">
                     </div>
 
                     <div class="col-md-6">
                         <label for="apellido" class="form-label">Apellidos</label>
-                        <input id="apellido" name="apellidos" type="text" class="form-control" required maxlength="100">
+                        <input id="apellido" name="apellidos" type="text" class="form-control" required maxlength="60">
                     </div>
 
                     <div class="col-12">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input id="email" name="email" type="email" class="form-control" required maxlength="255" placeholder="nombre@ejemplo.com">
+                        <input id="email" name="email" type="email" class="form-control" required maxlength="100" placeholder="nombre@ejemplo.com">
                     </div>
 
                     <div class="col-md-6">
                         <label for="telefono" class="form-label">Teléfono</label>
-                        <input id="telefono" name="telefono" type="tel" class="form-control" required maxlength="20" pattern="[0-9+\-\s]{7,20}" placeholder="+34 600 000 000">
+                        <input id="telefono" name="telefono" type="tel" class="form-control" required pattern="[6-9]\d{8}" placeholder="600 000 000">
                     </div>
 
                     <div class="col-md-6">
@@ -32,7 +32,7 @@
 
                     <div class="col-12">
                         <label for="direccion" class="form-label">Dirección</label>
-                        <textarea id="direccion" name="direccion" class="form-control" rows="2" maxlength="255" placeholder="Calle, número, ciudad, código postal"></textarea>
+                        <textarea id="direccion" name="direccion" class="form-control" rows="2" maxlength="100" placeholder="Calle, número, ciudad, código postal"></textarea>
                     </div>
 
                     <div class="col-md-6">
@@ -47,7 +47,7 @@
 
                     <div class="col-md-12">
                         <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
-                        <input id="nombre_usuario" name="usuario" type="text" class="form-control" required maxlength="50" placeholder="Nombre de usuario">
+                        <input id="nombre_usuario" name="usuario" type="text" class="form-control" required maxlength="60" placeholder="Nombre de usuario">
                     </div>
 
                     <div class="col-md-6">

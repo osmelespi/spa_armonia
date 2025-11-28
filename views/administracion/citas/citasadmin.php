@@ -157,9 +157,6 @@ $citas = $citaController->obtenerCitas();
                                 <i class="bi bi-chat-left-text"></i> Motivo de la Cita
                             </label>
                             <textarea class="form-control" id="createReason" rows="3" required></textarea>
-                            <small class="text-muted">
-                                <span id="createCharCount">0</span>/500 caracteres
-                            </small>
                         </div>
                     </form>
                 </div>
@@ -214,9 +211,6 @@ $citas = $citaController->obtenerCitas();
                                 <i class="bi bi-chat-left-text"></i> Motivo de la Cita
                             </label>
                             <textarea class="form-control" id="editReason" rows="3" required></textarea>
-                            <small class="text-muted">
-                                <span id="editCharCount">0</span>/500 caracteres
-                            </small>
                         </div>
                     </form>
                 </div>

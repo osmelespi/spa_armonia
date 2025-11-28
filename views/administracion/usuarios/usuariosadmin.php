@@ -88,26 +88,26 @@ $usuarios = $usuarioController->listarUsuarios();
     <div class="modal fade" id="createUser" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
+                <form id="createForm">
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">
                         <i class="bi bi-person-plus"></i> Crear Nuevo Usuario
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="createForm">
+                    <div class="modal-body">
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="createNombre" class="form-label">
                                     <i class="bi bi-person"></i> Nombre
                                 </label>
-                                <input type="text" class="form-control" id="createNombre" name="nombre" required>
+                                <input type="text" class="form-control" id="createNombre" name="nombre" minlength="3" maxlength="40" required>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="createApellidos" class="form-label">
                                     <i class="bi bi-person"></i> Apellidos
                                 </label>
-                                <input type="text" class="form-control" id="createApellidos" name="apellidos" required>
+                                <input type="text" class="form-control" id="createApellidos" name="apellidos" minlength="2" maxlength="60"  required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="createSexo" class="form-label">
@@ -124,13 +124,13 @@ $usuarios = $usuarioController->listarUsuarios();
                                 <label for="createEmail" class="form-label">
                                     <i class="bi bi-card-text"></i> Email
                                 </label>
-                                <input type="email" class="form-control" id="createEmail" name="email" required>
+                                <input type="email" class="form-control" id="createEmail" name="email" maxlength="100" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="createTelefono" class="form-label">
                                     <i class="bi bi-card-text"></i> Teléfono
                                 </label>
-                                <input type="tel" class="form-control" id="createTelefono" name="telefono" required>
+                                <input type="tel" class="form-control" id="createTelefono" name="telefono" pattern="[6-9]\d{8}" required>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="createFechaNacimiento" class="form-label">
@@ -142,7 +142,7 @@ $usuarios = $usuarioController->listarUsuarios();
                                 <label for="createDireccion" class="form-label">
                                     <i class="bi bi-card-text"></i> Dirección
                                 </label>
-                                <input type="text" class="form-control" id="createDireccion" name="direccion" required>
+                                <input type="text" class="form-control" id="createDireccion" name="direccion" minlength="10" maxlength="100" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="createUsuario" class="form-label">
@@ -169,16 +169,16 @@ $usuarios = $usuarioController->listarUsuarios();
                                 </select>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Cancelar
-                    </button>
-                    <button type="button" class="btn btn-success" onclick="crearUsuario()">
-                    Crear Usuario
-                    </button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                        Crear Usuario
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -194,21 +194,21 @@ $usuarios = $usuarioController->listarUsuarios();
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="editForm">
+                <form id="editForm">
+                    <div class="modal-body">
                         <input type="hidden" id="editUserId" name="idUser">
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="editNombre" class="form-label">
                                     <i class="bi bi-person"></i> Nombre
                                 </label>
-                                <input type="text" class="form-control" id="editNombre" name="nombre" required>
+                                <input type="text" class="form-control" id="editNombre" name="nombre" minlength="3" maxlength="40" required>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="editApellidos" class="form-label">
                                     <i class="bi bi-person"></i> Apellidos
                                 </label>
-                                <input type="text" class="form-control" id="editApellidos" name="apellidos" required>
+                                <input type="text" class="form-control" id="editApellidos" name="apellidos" minlength="2" maxlength="60" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="editSexo" class="form-label">
@@ -225,13 +225,13 @@ $usuarios = $usuarioController->listarUsuarios();
                                 <label for="editEmail" class="form-label">
                                     <i class="bi bi-card-text"></i> Email
                                 </label>    
-                                <input type="email" class="form-control" id="editEmail" name="email" required>
+                                <input type="email" class="form-control" id="editEmail" name="email" maxlength="100" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="editTelefono" class="form-label">
                                     <i class="bi bi-card-text"></i> Teléfono
                                 </label>
-                                <input type="text" class="form-control" id="editTelefono" name="telefono" required>
+                                <input type="text" class="form-control" id="editTelefono" name="telefono" pattern="[6-9]\d{8}" required>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="editFechaNacimiento" class="form-label">
@@ -243,7 +243,7 @@ $usuarios = $usuarioController->listarUsuarios();
                                 <label for="editDireccion" class="form-label">
                                     <i class="bi bi-card-text"></i> Dirección
                                 </label>
-                                <input type="text" class="form-control" id="editDireccion" name="direccion" required>
+                                <input type="text" class="form-control" id="editDireccion" name="direccion" minlength="10" maxlength="100" required>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="editRol" class="form-label">
@@ -255,16 +255,17 @@ $usuarios = $usuarioController->listarUsuarios();
                                     <option value="user">Usuario</option>
                                 </select>
                             </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancelar
-                    </button>
-                    <button type="button" class="btn btn-success" onclick="actualizarUsuario()">
-                        Guardar Cambios
-                    </button>
-                </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            Guardar Cambios
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
